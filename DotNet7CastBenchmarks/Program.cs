@@ -1,2 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using DotNet7CastBenchmarks;
+
+//Person personObject = (Person)StaticObjects.PersonObject;
+//Person? personObject = StaticObjects.PersonObject as Person;
+
+if(StaticObjects.PersonObject is not Person personObject)
+{
+    return;
+}
+
+Console.WriteLine(personObject.Name);

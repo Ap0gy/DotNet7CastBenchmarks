@@ -2,23 +2,23 @@
 
 namespace DotNet7CastBenchmarks;
 
-
 [MemoryDiagnoser(false)]
+
 public class Benchmarks
 {
     [Benchmark]
     public Person SafeCast()
     {
-        Person? safeCastedPersonObject = StaticObjects.PersonObject as Person;
-        return safeCastedPersonObject!;
+        Person? personObject = StaticObjects.PersonObject as Person;
+        return personObject!;
     }
 
     [Benchmark]
     public Person MatchCast()
     {
-        if (StaticObjects.PersonObject is Person matchCastedpersonObject)
+        if (StaticObjects.PersonObject is Person personObject)
         {
-            return matchCastedpersonObject;
+            return personObject;
         }
         return null!;
     }
@@ -26,7 +26,7 @@ public class Benchmarks
     [Benchmark]
     public Person HardCast()
     {
-        Person personHardCast = (Person)StaticObjects.PersonObject;
-        return personHardCast;
+        Person personObject = (Person)StaticObjects.PersonObject;
+        return personObject;
     }
  }

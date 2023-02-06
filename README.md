@@ -1,24 +1,13 @@
-Difference is tiny, so just use the most clean maintainabe one.
+# C# .Net 7 Casting Benchmarks
 
-HardCasting is the fastest 
-Safecasting is the slowest
-
+## Basic Casts:
 |    Method |     Mean |     Error |    StdDev | Allocated |
 |---------- |---------:|----------:|----------:|----------:|
 |  SafeCast | 1.996 ns | 0.0865 ns | 0.0809 ns |         - |
 | MatchCast | 1.449 ns | 0.0360 ns | 0.0337 ns |         - |
 |  HardCast | 1.039 ns | 0.0127 ns | 0.0119 ns |         - |
 
-
-
-
-Working with collections and LINQ:
-
-OfType looks cleanest
-HardCast is over twice as fast in general
-
-HardCast TypeOf is fastest safe-cast but  will fail with inheritance (shouldn't be a problem if you're correctly favouring composition)
-
+## Working with collections and LINQ:
 |            Method |      Mean |     Error |    StdDev | Allocated |
 |------------------ |----------:|----------:|----------:|----------:|
 |           Cast_As | 18.749 us | 0.0685 us | 0.0641 us |  16.34 KB |
@@ -28,3 +17,11 @@ HardCast TypeOf is fastest safe-cast but  will fail with inheritance (shouldn't 
 |       HardCast_Is |  7.967 us | 0.0365 us | 0.0341 us |  16.36 KB |
 |   HardCast_TypeOf |  7.068 us | 0.0542 us | 0.0480 us |  16.36 KB |
 | HardCast_UnsafeAs |  7.035 us | 0.0410 us | 0.0383 us |  16.36 KB |
+
+
+
+<p>HardCasting collections is more than twice as fast on average for the collections. Similarly hard casting was the fastest of the standard casts, with the slowest being safe casts.</p>
+<p>HardCast TypeOf is fastest safe-cast but  will fail with inheritance (shouldn't be a problem if you're correctly favouring composition), with OfType looking the cleanest.</p>
+<p>Hard casting is the fastest and safecasting is the slowest of the standard casts.</p>
+
+<p>Overall, <b>speed variation between different cast techniques are tiny</b>, so it's worth focussing on using the most clean/maintainabe cast type depending on the context.</p>
